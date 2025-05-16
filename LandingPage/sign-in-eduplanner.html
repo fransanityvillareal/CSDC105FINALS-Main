@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduPlanner Sign-In</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="sign-in-style.css">
+</head>
+
+<body>
+  <div class="sign-in-page">
+    <a href="./index.html" class="back-button">
+      <span class="back-icon"><img src="backicon.svg"></span>
+      Back
+    </a>
+
+    <div class="welcome-page">
+      <div class="welcome-content">
+        <h1 class="welcome-to-eduplanner">Welcome to EduPlanner!</h1>
+        <p class="eduplanner-description">Clarity gives you the blocks & components you need to create an intuitive and clean
+          class program.</p>
+      </div>
+    </div>
+
+    <div class="sign-in-form">
+      <div class="form-container">
+        <div class="form-header">
+          <h2 class="sign-in">Sign-in</h2>
+          <p class="description">Register your account</p>
+        </div>
+
+        <form id="signInForm" onsubmit="handleSignIn(event)">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Name">
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email address">
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password">
+          </div>
+
+          <div class="input-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="password" placeholder="Confirm Password">
+          </div>
+
+          <div class="options">
+            <p class="terms-agreement">
+              By signing in, you agree to the <a href="#terms">Terms and Conditions</a> and <a href="#privacy">Privacy Policy</a>
+            </p>
+          </div>
+
+          <button type="submit" class="sign-in-button">Sign in</button>
+        </form>
+
+        <p class="create-account">
+          Already have an account? <a href="./log-in.html">Log-in to your account</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="termsModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Terms and Conditions</h2>
+      <div class="modal-body">
+        <h3>By accessing and using EduPlanner, you agree to these terms.</h3>
+        <p>1. You are responsible for maintaining the confidentiality of your account.</p>
+        <p>2. You will not share your login credentials with unauthorized individuals.</p>
+        <p>3. EduPlanner reserves the right to modify or terminate access at any time.</p>
+        <p>4. Any misuse of the platform may result in account suspension.</p>
+
+        <h3>Disclaimer:</h3>
+        <p>EduPlanner takes into consideration DepEd guidelines in its design and functionality. 
+          However, its implementation does not guarantee full compliance or accuracy in relation to DepEd policies. 
+          The creators of EduPlanner are not affiliated with DepEd, and any discrepancies should be independently verified with official sources.
+          
+          <br><br>By proceeding, you confirm that you have read and agreed to these terms.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="privacyModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Privacy Policy</h2>
+      <div class="modal-body">
+        <h3>We value your privacy. By signing in, you acknowledge that:</h3>
+        <p>1. Your personal data, including name and email, will be collected for authentication purposes.</p>
+        <p>2. EduPlanner will not share your information with third parties without consent.</p>
+        <p>3. We use security measures to protect your data, but you are responsible for securing your device.</p>
+        <p>4. You can request data deletion by contacting our support team.</p>
+
+        <h3>Disclaimer:</h3>
+        <p>EduPlanner takes into consideration DepEd guidelines in its design and functionality. 
+          However, its implementation does not guarantee full compliance or accuracy in relation to DepEd policies. 
+          The creators of EduPlanner are not affiliated with DepEd, and any discrepancies should be independently verified with official sources.
+          
+          <br><br>By proceeding, you confirm that you have read and agreed to these terms.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="sign-in-js.js"></script>
+</body>
+
+</html>

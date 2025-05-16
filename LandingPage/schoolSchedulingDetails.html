@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Scheduling Details</title>
+    <link rel="stylesheet" href="schoolSchedulingDetails.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navTop">
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="picture1.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <div class="ProfileName">Gian Roilo P. Salen</div>
+                <div class="ProfilePosition">Administrator</div>
+            </div>
+        </div>
+
+        <div class="links">
+            <div class="smalllogo"></div>
+            <a href="dashboard.html" class="home">Home</a>
+            <a href="#" class="about">About</a>
+            <a href="#" class="contact">Contact</a>
+        </div>
+        <div class="navitems">
+            <a href="/LandingPage/log-in.html" class="log-in">Log out</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        </div>
+        <div class="sidebar-profile">
+            <div class="profile-pic">
+                <img src="picture1.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <div class="ProfileName">Gian Roilo P. Salen</div>
+                <div class="ProfilePosition">Administrator</div>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">
+                Dashboard
+            </a>
+            <a href="schoolSchedulingDetails.html" class="menu-item active">
+                Base Table Management
+            </a>
+            <a href="create-timetable.html" class="menu-item">
+                Class Programs
+            </a>
+            <a href="#" class="menu-item">
+                Settings
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <a href="/LandingPage/log-in.html" class="logout">
+                Log out
+            </a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMenu()"></div>
+
+    <!-- Main Container -->
+    <div class="mainContainer">
+        <!-- School Scheduling Details Section -->
+        <section class="details-section">
+            <div class="section-header">
+                <h2>Basic Details</h2>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>School Year</h3>
+                    <div class="input-wrapper year-selector">
+                        <input type="number" id="startYear" class="form-input" min="2000" max="2099" value="2023"
+                            onchange="updateEndYear()">
+                        <span class="year-separator">-</span>
+                        <input type="number" id="endYear" class="form-input" readonly value="2024">
+                        <button onclick="saveSchoolYear()" class="save-button">
+                            <span class="material-icons">check</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <h3>Start Date</h3>
+                    <div class="input-wrapper">
+                        <input type="date" id="startDate" value="2023-08-01" class="form-input">
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3>End Date</h3>
+                    <div class="input-wrapper">
+                        <input type="date" id="endDate" value="2023-12-15" class="form-input">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Management Sections -->
+        <div class="management-container">
+            <div class="management-tabs">
+                <button class="tab-button active" onclick="switchManagementView('teachers')">
+                    Teachers Management
+                </button>
+                <button class="tab-button" onclick="switchManagementView('sections')">
+                    Sections Management
+                </button>
+                <button class="tab-button" onclick="switchManagementView('subjects')">
+                    Subjects Management
+                </button>
+            </div>
+
+            <div class="management-content">
+                <!-- Teachers View -->
+                <div class="management-view active" id="teachersView">
+                    <div class="view-header">
+                        <button onclick="openTeacherForm()" class="add-button">
+                            <span>+</span> Add Teacher
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table id="teachersTable">
+                            <thead>
+                                <tr>
+                                    <th>Teacher ID</th>
+                                    <th>Name</th>
+                                    <th>Specialization</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sections View -->
+                <div class="management-view" id="sectionsView">
+                    <div class="view-header">
+                        <div class="grade-level-tabs">
+                            <button class="tab-button active" onclick="switchGradeLevel('all')">All</button>
+                            <div class="dropdown">
+                                <button class="tab-button" onclick="toggleDropdown('junior')">
+                                    Grade 7-10
+                                    <span class="material-icons">expand_more</span>
+                                </button>
+                                <div class="dropdown-content" id="juniorDropdown">
+                                    <button onclick="filterByGrade(7)">Grade 7</button>
+                                    <button onclick="filterByGrade(8)">Grade 8</button>
+                                    <button onclick="filterByGrade(9)">Grade 9</button>
+                                    <button onclick="filterByGrade(10)">Grade 10</button>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="tab-button" onclick="toggleDropdown('senior')">
+                                    Grade 11-12
+                                    <span class="material-icons">expand_more</span>
+                                </button>
+                                <div class="dropdown-content" id="seniorDropdown">
+                                    <button onclick="filterByGrade(11)">Grade 11</button>
+                                    <button onclick="filterByGrade(12)">Grade 12</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="openSectionForm()" class="add-button">
+                            <span>+</span> Add Section
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table id="sectionsTable">
+                            <thead>
+                                <tr>
+                                    <th>Section ID</th>
+                                    <th>Name</th>
+                                    <th>Grade Level</th>
+                                    <th>Adviser</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Subjects View -->
+                <div class="management-view" id="subjectsView">
+                    <div class="view-header">
+                        <div class="grade-level-tabs">
+                            <button class="tab-button active" onclick="switchSubjectLevel('all')">All</button>
+                            <div class="dropdown">
+                                <button class="tab-button" onclick="toggleDropdown('juniorSubjects')">
+                                    Grade 7-10
+                                    <span class="material-icons">expand_more</span>
+                                </button>
+                                <div class="dropdown-content" id="juniorSubjectsDropdown">
+                                    <button onclick="filterSubjectByGrade(7)">Grade 7</button>
+                                    <button onclick="filterSubjectByGrade(8)">Grade 8</button>
+                                    <button onclick="filterSubjectByGrade(9)">Grade 9</button>
+                                    <button onclick="filterSubjectByGrade(10)">Grade 10</button>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="tab-button" onclick="toggleDropdown('seniorSubjects')">
+                                    Grade 11-12
+                                    <span class="material-icons">expand_more</span>
+                                </button>
+                                <div class="dropdown-content" id="seniorSubjectsDropdown">
+                                    <button onclick="filterSubjectByGrade(11)">Grade 11</button>
+                                    <button onclick="filterSubjectByGrade(12)">Grade 12</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="openSubjectForm()" class="add-button">
+                            <span>+</span> Add Subject
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table id="subjectsTable">
+                            <thead>
+                                <tr>
+                                    <th>Subject ID</th>
+                                    <th>Name</th>
+                                    <th>Grade Level</th>
+                                    <th>Semester</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Form Modal -->
+    <div id="teacherModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Teacher</h2>
+                <span class="close" onclick="closeTeacherForm()">&times;</span>
+            </div>
+            <form id="teacherForm" onsubmit="saveTeacher(event)">
+                <div class="form-group">
+                    <label for="teacherId">Teacher ID</label>
+                    <input type="text" id="teacherId" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacherName">Full Name</label>
+                    <input type="text" id="teacherName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="specialization">Subject Specialization</label>
+                    <div class="select-wrapper">
+                        <select id="specialization" class="form-input" multiple required>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Science">Science</option>
+                            <option value="English">English</option>
+                            <option value="Filipino">Filipino</option>
+                            <option value="Social Studies">Social Studies</option>
+                            <option value="TLE">TLE</option>
+                            <option value="MAPEH">MAPEH</option>
+                            <option value="Values Education">Values Education</option>
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-button">Save Teacher</button>
+                    <button type="button" class="cancel-button" onclick="closeTeacherForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Section Form Modal -->
+    <div id="sectionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Section</h2>
+                <span class="close" onclick="closeSectionForm()">&times;</span>
+            </div>
+            <form id="sectionForm" onsubmit="saveSection(event)">
+                <div class="form-group">
+                    <label for="sectionId">Section ID</label>
+                    <input type="text" id="sectionId" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="sectionName">Section Name</label>
+                    <input type="text" id="sectionName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="gradeLevel">Grade Level</label>
+                    <select id="gradeLevel" class="form-input" required>
+                        <option value="">Select Grade Level</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="adviser">Section Adviser</label>
+                    <select id="adviser" class="form-input" required>
+                        <option value="">Select Adviser</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-button">Save Section</button>
+                    <button type="button" class="cancel-button" onclick="closeSectionForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Subject Form Modal -->
+    <div id="subjectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Subject</h2>
+                <span class="close" onclick="closeSubjectForm()">&times;</span>
+            </div>
+            <form id="subjectForm" onsubmit="saveSubject(event)">
+                <div class="form-group">
+                    <label for="subjectId">Subject ID</label>
+                    <input type="text" id="subjectId" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="subjectName">Subject Name</label>
+                    <input type="text" id="subjectName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="subjectGradeLevel">Grade Level</label>
+                    <select id="subjectGradeLevel" class="form-input" required>
+                        <option value="">Select Grade Level</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="semester">Semester (for Senior High)</label>
+                    <select id="semester" class="form-input">
+                        <option value="">Not Applicable</option>
+                        <option value="1">First Semester</option>
+                        <option value="2">Second Semester</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-button">Save Subject</button>
+                    <button type="button" class="cancel-button" onclick="closeSubjectForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="schoolSchedulingDetails.js"></script>
+</body>
+
+</html>
+```

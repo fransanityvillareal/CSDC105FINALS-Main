@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPlanner Timetable</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" />
+    <link rel="stylesheet" href="timetable.css">
+
+<body>
+    <nav class="navTop">
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="picture1.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <div class="ProfileName">Gian Roilo P. Salen</div>
+                <div class="ProfilePosition">Administrator</div>
+            </div>
+        </div>
+
+        <div class="links">
+            <div class="smalllogo"></div>
+            <a href="dashboard.html" class="home">Home</a>
+            <a href="#" class="about">About</a>
+            <a href="#" class="contact">Contact</a>
+        </div>
+        <div class="navitems">
+            <a href="/LandingPage/log-in.html" class="log-in">Log out</a>
+        </div>
+    </nav>
+
+    <div class="maincontainer">
+        <div class="header-section">
+            <a href="./dashboard.html" class="back-button">
+                <span class="back-icon">
+                    <img src="backicon.svg" alt="Back">
+                </span>
+                <span class="back-text">Back</span>
+            </a>
+            <h1>Placeholder name of SY Timetable</h1>
+        </div>
+
+        <div class="geninfo">
+            <div class="geninfo-row">
+                <div class="geninfo-left">
+                    <div class="geninfo-item">
+                        <span class="geninfo-label">School Year:</span>
+                        <span class="geninfo-sy">2023-2024</span>
+                    </div>
+                    <div class="geninfo-separator"></div>
+                    <div class="geninfo-item">
+                        <span class="geninfo-label">Grade Level:</span>
+                        <span class="geninfo-grade">10</span>
+                    </div>
+                    <div class="geninfo-separator"></div>
+                    <div class="geninfo-item">
+                        <span class="geninfo-label">Date Created:</span>
+                        <span class="geninfo-date">October 1, 2023</span>
+                    </div>
+                </div>
+                <div class="geninfo-menu">
+                    <div class="menu-buttons">
+                        <button class="menu-button" onclick="toggleMenu('saveMenu')">
+                            Save As
+                            <span class="menu-icon">▼</span>
+                        </button>
+                    </div>
+                    <div class="menu-dropdown" id="saveMenu">
+                        <a href="#" onclick="saveAsPDF()">Save as PDF</a>
+                        <a href="#" onclick="saveAsExcel()">Save as Excel</a>
+                        <a href="#" onclick="saveAsImage()">Save as Image</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timetable-container">
+            <table id="timetable">
+                <thead>
+                    <tr>
+                        <th rowspan="1">Time</th>
+                        <th colspan="1">Section A</th>
+                        <th colspan="1">Section B</th>
+                        <th colspan="1">Section C</th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-cellsheet">
+                    <tr>
+                        <td>8:00 - 9:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9:00 - 10:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10:00 - 11:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- Add more time slots as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="timetable.js" defer></script>
+</body>
+
+</html>

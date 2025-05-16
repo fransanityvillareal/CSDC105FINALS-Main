@@ -1,0 +1,71 @@
+<!-- generic_crud.html -->
+{% load custom_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ model_name|default:"Advisory" }} Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .nav-buttons { margin-bottom: 20px; }
+        .nav-buttons a {
+            display: inline-block;
+            padding: 8px 12px;
+            margin-right: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+        }
+        .nav-buttons a:hover {
+            background-color: #e0e0e0;
+        }
+        form { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        a { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <a href="{% url 'timeslot' %}">Time Slots</a>
+        <a href="{% url 'subject' %}">Subjects</a>
+        <a href="{% url 'section' %}">Sections</a>
+        <a href="{% url 'teacher' %}">Teachers</a>
+        <a href="{% url 'advisory' %}">Advisory</a>
+    </div>
+
+    <h1>{{ model_name|default:"Advisory" }} Management</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                {% for field in fields %}
+                    <th>{{ field }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    {% for field in fields %}
+                        <td>{{ item|get_attr:field }}</td>
+                    {% endfor %}
+                    <td>
+                        <a href="edit/{{ item.pk }}/">Edit</a>
+                        <a href="delete/{{ item.pk }}/">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

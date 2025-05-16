@@ -1,0 +1,258 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .log-in-page {
+    display: flex;
+    height: 100vh;
+    animation: pageLoad 0.6s ease-out;
+  }
+  
+  .welcome-page {
+    flex: 1;
+    background: linear-gradient(180deg, #9747ff, #5b2b99 80.5%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+  }
+  
+  .welcome-to-eduplanner {
+    margin-top: 10px;
+    font-size: 52px;
+    font-weight: 600;
+  }
+  
+  .welcome-content {
+    max-width: 400px;
+    position: absolute;
+    color: #fff;
+    top: 100px;
+    text-align: left;
+    margin-top: 50px;
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .eduplanner-description {
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgb(203, 213, 225);
+  }
+  
+  .log-in-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 90px;
+    background: #fff;
+  }
+  
+  .form-container {
+    max-width: 400px;
+    width: 100%;
+    animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .form-header {
+    margin-bottom: 30px;
+  }
+  
+  .log-in {
+    font-size: 36px;
+    font-weight: 600;
+    color: #090914;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    font-size: 16px;
+    color: #52525b;
+  }
+  
+  .input-email {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #090914;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    font-size: 14px;
+    color: #090914;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .input-group input:focus {
+    border-color: #9747FF;
+    box-shadow: 0 0 0 3px rgba(151, 71, 255, 0.1);
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+  
+  .remember-me input {
+    margin-right: 10px;
+  }
+  
+  .remember-me input[type="checkbox"] {
+    transition: border-color 0.3s ease;
+  }
+  
+  .forgot-password {
+    font-size: 14px;
+    color: #9747ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .forgot-password:hover {
+    color: #9747FF;
+  }
+  
+  .log-in-button {
+    width: 50%;
+    padding: 14px;
+    border-radius: 8px;
+    background-color: #9747ff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .log-in-button:hover {
+    background-color: #8033FF;
+    transform: translateY(-2px);
+  }
+  
+  .log-in-button:active {
+    transform: translateY(0);
+  }
+  
+  .create-account {
+    text-align: left;
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .create-account a {
+    color: #9747ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .create-account a:hover {
+    color: #9747FF;
+  }
+  
+  /* Back button styles */
+  .back-button {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+  }
+  
+  .back-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-5px);
+  }
+  
+  .back-button img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .back-button:hover img {
+    transform: translateX(-3px);
+  }
+  
+  .back-icon {
+    font-size: 20px;
+  }
+  
+  /* Animation keyframes */
+  @keyframes pageLoad {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .back-button {
+      top: 16px;
+      left: 16px;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+    
+    .back-button img {
+      width: 16px;
+      height: 16px;
+    }
+  }

@@ -1,1 +1,2 @@
-# CSDC105FINALS-Main
+# EduPlanner
+Project
